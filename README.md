@@ -1,13 +1,16 @@
 # docker-run
-#### update packages or execute arbitrary commands inside running docker containers
+#### *update packages or execute arbitrary commands inside running docker containers*
 
-When running multiple containers, updating the packeges, including security updates, in all of them can be a time consuming job.
+When running multiple containers, updating the packeges, including security updates, in all of them can be a painful task.
 
 `docker-run` can be used to issue any arbitrary command on all running containers or a specified subset.
 
 Quick use: `docker run --rm -v /var/run/docker.sock:/tmp/docker.sock itech/docker-run exec`
 
 By default *exec* will execute `date` command in all running containers
+
+-
+### Usage
 
 The easiest way to use it is to create an alias, so you just execute `docker-run` directly as a regural command
 
@@ -17,7 +20,10 @@ If connecting to docker daemon over http you can specify the docker daemon host:
 
 `alias docker-run='docker run --rm itech/docker-run --host http://127.0.0.1:4243'`
 
-Examples (assumig you have the alias):
+--
+
+### Examples
+*assumig you have the alias*
 
 - `docker-run exec "uname -a"` 
   *display the kernel in each container*
