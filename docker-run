@@ -10,7 +10,7 @@ def main():
   program = sys.argv[0].strip(' .\/')
 
   parser = ArgumentParser(prog=program,usage='%(prog)s [OPTIONS] COMMAND [arg...]',epilog='Run \'%(prog)s COMMAND --help\' for more information on a command.')
-  parser.add_argument('--version', action='version', version='%(prog)s 0.0.1')
+  parser.add_argument('--version', action='version', version='%(prog)s 0.0.3')
   parser.add_argument('-c','--containers',dest='container',default='*',nargs='?',help='list of containers to execute separated by comma either container id or name, default: \'*\' for all containers')
   parser.add_argument('--host',dest='host',default='unix:///var/run/docker.sock',help='docker host address unix://SOCK_PATH or http://HOST:PORT')
 
@@ -89,7 +89,7 @@ def run_command(client, args):
       else:
         print(client.execute(c,"apt-get -y upgrade %s"%(" ".join(args.package))))
     elif args.command == 'exec':
-      print(client.execute(c,args.cmd)) #stream=args.stream))
+      print(client.execute(c,['/bin/bash','-c',args.cmd])) #stream=args.stream))
 
 if __name__ == '__main__':
   main()

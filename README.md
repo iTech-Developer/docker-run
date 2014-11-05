@@ -39,6 +39,9 @@ If connecting to docker daemon over http you can specify the docker daemon host:
 - `docker-run -c my_centos exec "yum update -y"`
   *will update a container names 'my_centos'*
 
+- `docker-run exec "date +'%Y-%m-%d' && uname -r"`
+  *example of running multiple commands with different parameter for each*
+
 --
 ## LICENSE
 Copyright 2014 iTech-Developer
